@@ -1,13 +1,13 @@
 package com.example.statemanagement.screens;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.statemanagement.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.statemanagement.adapter.PostRecyclerAdapter;
 import com.example.statemanagement.databinding.ActivityMainBinding;
 import com.example.statemanagement.models.Post;
@@ -32,15 +32,15 @@ public class MainActivity extends AppCompatActivity {
         PostRecyclerAdapter adapter = new PostRecyclerAdapter(posts);
         binding.postRV.setAdapter(adapter);
 
+
         viewModel = new ViewModelProvider(this).get(PostViewModel.class);
-        viewModel.getPosts();
 
 
-
-        viewModel.postsData.observe(this, posts ->{
-            if (posts != null){
-                switch (posts.getState()){
+        viewModel.postsData.observe(this, posts -> {
+            if (posts != null) {
+                switch (posts.getState()) {
                     case LOADING:
+                        Log.d("TAG", "onCreate: hey");
                         binding.progressBar.setVisibility(View.VISIBLE);
                         binding.postRV.setVisibility(View.GONE);
                         break;

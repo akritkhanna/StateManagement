@@ -1,5 +1,7 @@
 package com.example.statemanagement.view_model;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -21,6 +23,7 @@ public class PostViewModel extends ViewModel {
 
     public PostViewModel(){
         postsData = new MutableLiveData<>();
+        getPosts();
 
     }
 
